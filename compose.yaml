@@ -24,6 +24,8 @@ services:
     ipc: host
     stdin_open: true
     tty: true
+    entrypoint: ["/bin/bash"]
+    command: "/root/entrypoint.sh"
     networks:
       - general
     environment:
@@ -33,6 +35,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
       - ./wb-software-workspace/:/root/workspace
+      - ./software_docker/entrypoint.sh:/root/entrypoint.sh
 
 networks:
   general:
